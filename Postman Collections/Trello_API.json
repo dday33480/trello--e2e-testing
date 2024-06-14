@@ -13,7 +13,23 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com?Something=Quelquechose",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"query": [
+						{
+							"key": "Something",
+							"value": "Quelquechose",
+							"type": "text"
+						}
+					]
+				}
 			},
 			"response": []
 		}
