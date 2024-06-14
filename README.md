@@ -11,4 +11,6 @@
 
 ---
 
-
+### Technos used
+1. Postman - For API tests
+2. Cypress for E2E and UI Tests
