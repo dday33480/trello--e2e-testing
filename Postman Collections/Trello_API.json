@@ -255,13 +255,47 @@
 		},
 		{
 			"name": "Add Card",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "31194147-3061-4217-9e4a-369945a2c876",
+						"exec": [
+							"pm.variables.set(listId : 6679780f56377c4485bb6000)\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "830cf32e-39cf-4e80-b20c-d0b00d819750",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cards/?idList={{listId}}&{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cards",
+						""
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "{{listId}}"
+						},
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": []
 		}
