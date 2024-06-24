@@ -93,7 +93,25 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/boards/{id}/lists?",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						"{id}",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"type": "text"
+						}
+					]
+				}
 			},
 			"response": []
 		}
