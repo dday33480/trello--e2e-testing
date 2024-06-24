@@ -74,14 +74,40 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\" : \"Test API\",\n    \"key\" : {{API_key}},\n    \"token\" : {{token}}\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "{{base_url}}/boards/"
+				"url": {
+					"raw": "{{base_url}}/boards/?name=API Tableau&key={{API_key}}&token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "API Tableau",
+							"type": "text"
+						},
+						{
+							"key": "key",
+							"value": "{{API_key}}",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				}
 			},
 			"response": []
 		},
