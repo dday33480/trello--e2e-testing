@@ -212,7 +212,12 @@
 						"exec": [
 							"pm.test('Code Status OK', function() {\r",
 							"    pm.expect(pm.response.code).to.equal(200)\r",
-							"})"
+							"})\r",
+							"\r",
+							"const parser = pm.response.json();\r",
+							"const listId = parser.id;\r",
+							"\r",
+							"pm.globals.set('listId', listId)"
 						],
 						"type": "text/javascript",
 						"packages": {}
