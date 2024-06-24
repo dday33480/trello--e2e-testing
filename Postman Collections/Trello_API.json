@@ -215,9 +215,7 @@
 							"})\r",
 							"\r",
 							"const parser = pm.response.json();\r",
-							"const listId = parser.id;\r",
-							"\r",
-							"pm.globals.set('listId', listId)"
+							"pm.globals.set('listId', parser.id)"
 						],
 						"type": "text/javascript",
 						"packages": {}
