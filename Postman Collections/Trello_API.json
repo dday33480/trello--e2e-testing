@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Test Request",
+			"name": "Get Token",
 			"id": "f38b98c8-160b-4979-a562-fc690c8782e6",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
