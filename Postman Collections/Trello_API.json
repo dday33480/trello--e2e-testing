@@ -23,8 +23,8 @@
 							"    pm.expect(jsonData).to.have.property('idMember'); \r",
 							"});\r",
 							"\r",
-							"pm.globals.set('TrelloId', jsonData.id);\r",
-							"pm.globals.set('MemberId', jsonData.idMember)"
+							"pm.collectionVariables.set('TrelloId', jsonData.id);\r",
+							"pm.collectionVariables.set('MemberId', jsonData.idMember)"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -352,6 +352,16 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TrelloId",
+			"value": ""
+		},
+		{
+			"key": "MemberId",
+			"value": ""
 		}
 	]
 }
