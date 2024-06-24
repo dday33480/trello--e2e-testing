@@ -295,6 +295,11 @@
 						"exec": [
 							"pm.test(\"Code Status OK\", function(){\r",
 							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"\r",
+							"pm.test('Card Name Not Empty', function() {\r",
+							"    const parsedData = pm.response.json();\r",
+							"    pm.expect(parsedData.name).to.not.equal('null')\r",
 							"})"
 						],
 						"type": "text/javascript",
