@@ -352,7 +352,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "993354ae-e843-4994-ab46-fbcf1ae41872",
+				"id": "a73eb6b6-9e2b-47c7-a73a-350dfe0af7ae",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -363,7 +363,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a66e0b5f-aea9-4ea0-96fc-adeb9735f53d",
+				"id": "5d3559ad-2ed7-4744-89e3-fa1f0fe11ac0",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -383,11 +383,11 @@
 		},
 		{
 			"key": "IdBoards",
-			"value": ""
+			"value": "6666cc13bc1f5dc10cec50be"
 		},
 		{
 			"key": "listId",
-			"value": ""
+			"value": "667980e68327cb5eeb33c1e8"
 		}
 	]
 }
