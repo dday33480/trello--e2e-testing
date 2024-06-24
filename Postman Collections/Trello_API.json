@@ -261,8 +261,20 @@
 					"script": {
 						"id": "31194147-3061-4217-9e4a-369945a2c876",
 						"exec": [
-							"pm.variables.set(listId : 6679780f56377c4485bb6000)\r",
 							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8eb9d31d-2ce4-4618-9e20-3d74c2175c10",
+						"exec": [
+							"pm.test(\"Code Status OK\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -274,8 +286,17 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Postman API v2\",\r\n    \"desc\" : \"Test d'ajout de carte via API\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{base_url}}/cards/?idList={{listId}}&{{params_url}}",
 					"host": [
