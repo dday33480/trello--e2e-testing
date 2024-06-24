@@ -137,8 +137,7 @@
 							"})\r",
 							"\r",
 							"const parser = pm.response.json();\r",
-							"\r",
-							"console.log(parser[0].id)"
+							"pm.collectionVariables.set('IdBoards', parser[0].id)"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -234,7 +233,7 @@
 							"})\r",
 							"\r",
 							"const parser = pm.response.json();\r",
-							"pm.globals.set('listId', parser.id)"
+							"pm.collectionVariables.set('listId', parser.id)"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -380,6 +379,14 @@
 		},
 		{
 			"key": "MemberId",
+			"value": ""
+		},
+		{
+			"key": "IdBoards",
+			"value": ""
+		},
+		{
+			"key": "listId",
 			"value": ""
 		}
 	]
