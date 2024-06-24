@@ -133,14 +133,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/boards/{{TrelloId}}/lists/?key={{API_key}}&token={{token}}",
+					"raw": "{{base_url}}/members/{{TrelloId}}/boards/?key={{API_key}}&token={{token}}",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"boards",
+						"members",
 						"{{TrelloId}}",
-						"lists",
+						"boards",
 						""
 					],
 					"query": [
