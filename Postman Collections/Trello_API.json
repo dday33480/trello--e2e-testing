@@ -408,8 +408,36 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/boards/{{IdBoards}}/members?email=davidd33480@googlemail.com&{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						"{{IdBoards}}",
+						"members"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "jonathanchab+29052024@gmail.com",
+							"description": "Jonathan",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "davidd33480@googlemail.com",
+							"description": "David"
+						},
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": []
 		}
