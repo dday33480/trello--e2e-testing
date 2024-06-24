@@ -156,6 +156,26 @@
 		},
 		{
 			"name": "get a board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb15ec87-cc44-48cc-9089-e346adc84c47",
+						"exec": [
+							"pm.test('Code Status', function(){",
+							"    pm.expect(pm.response.code).to.equal(200)",
+							"})",
+							"",
+							"pm.test('name visible', function(){",
+							"    const Jsondata = pm.response.json();",
+							"    pm.expect(Jsondata.name).to.contain(\"Projet_Final_G1\")",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "8054070d-850d-41a1-b11b-72ee9d849ea2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
