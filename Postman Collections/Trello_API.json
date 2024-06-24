@@ -63,24 +63,51 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [
 					{
 						"key": "APIKey",
 						"value": "{{API_key}}",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\" : \"Test API\",\n    \"key\" : {{API_key}},\n    \"token\" : {{token}}\n\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "{{base_url}}/boards/"
+				"url": {
+					"raw": "{{base_url}}/boards/?name=Test API&API_key={{API_key}}&token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Test API"
+						},
+						{
+							"key": "API_key",
+							"value": "{{API_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
 			},
 			"response": []
 		}
