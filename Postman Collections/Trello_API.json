@@ -153,6 +153,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get a board",
+			"id": "8054070d-850d-41a1-b11b-72ee9d849ea2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/boards/{{IdBoards}}?{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						"{{IdBoards}}"
+					],
+					"query": [
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
