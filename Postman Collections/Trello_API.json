@@ -13,14 +13,17 @@
 					"script": {
 						"id": "ccb5c000-7a00-42e1-bd33-f909011f9889",
 						"exec": [
+							"const jsonData = pm.response.json(); \r",
+							"\r",
 							"pm.test('Code Status', function() {\r",
 							"    pm.expect(pm.response.code).to.equal(200)\r",
 							"})\r",
 							"\r",
 							"pm.test('idMember present', function() {\r",
-							"    const jsonData = pm.response.json(); \r",
-							"    pm.expect(jsonData).to.have.property('idMember');\r",
-							"});"
+							"    pm.expect(jsonData).to.have.property('idMember'); \r",
+							"});\r",
+							"\r",
+							"pm.globals.set('TrelloId', jsonData.id);"
 						],
 						"type": "text/javascript",
 						"packages": {}
