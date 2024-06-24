@@ -15,12 +15,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.trello.com/tokens/{{token}}?key={{API_key}}",
-					"protocol": "https",
+					"raw": "{{base_url}}/tokens/{{token}}?key={{API_key}}",
 					"host": [
-						"api",
-						"trello",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
 						"tokens",
@@ -29,8 +26,7 @@
 					"query": [
 						{
 							"key": "key",
-							"value": "{{API_key}}",
-							"type": "text"
+							"value": "{{API_key}}"
 						}
 					]
 				}
