@@ -18,9 +18,9 @@
 							"})\r",
 							"\r",
 							"pm.test('idMember present', function() {\r",
-							"    const parser = pm.response.json()\r",
-							"    pm.expect(pm.response.body).to.have.property('idMember')\r",
-							"})"
+							"    const jsonData = pm.response.json(); \r",
+							"    pm.expect(jsonData).to.have.property('idMember');\r",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}
