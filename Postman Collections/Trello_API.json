@@ -351,12 +351,27 @@
 		},
 		{
 			"name": "Update a Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45087ad3-81cf-4e6d-9285-bb1f2b915331",
+						"exec": [
+							"pm.test(\"Status Code OK\", function() {\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "71532d3d-faa2-4324-8687-a09145a80c4f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
