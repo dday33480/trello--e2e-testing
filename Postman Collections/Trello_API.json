@@ -15,6 +15,10 @@
 						"exec": [
 							"pm.test('Code Status', function() {\r",
 							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"\r",
+							"pm.test('idMember present', function() {\r",
+							"    pm.expect(pm.response.body).to.contain('idMember')\r",
 							"})"
 						],
 						"type": "text/javascript",
