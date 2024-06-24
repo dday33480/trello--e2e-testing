@@ -411,26 +411,25 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/boards/{{IdBoards}}/members?email=davidd33480@googlemail.com&{{params_url}}",
+					"raw": "{{base_url}}/boards/{{IdBoards}}}/members/66572a77c1b1d2a8a2ab8df1?type=normal&{{params_url}}",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"boards",
-						"{{IdBoards}}",
-						"members"
+						"{{IdBoards}}}",
+						"members",
+						"66572a77c1b1d2a8a2ab8df1"
 					],
 					"query": [
 						{
-							"key": "email",
-							"value": "jonathanchab+29052024@gmail.com",
-							"description": "Jonathan",
-							"disabled": true
+							"key": "type",
+							"value": "normal"
 						},
 						{
-							"key": "email",
-							"value": "davidd33480@googlemail.com",
-							"description": "David"
+							"key": "",
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "{{params_url}}",
