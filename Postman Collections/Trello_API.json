@@ -440,6 +440,18 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "TEST",
+			"id": "6dc09230-53ea-47f8-90f5-a6dcf6a9ad03",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"auth": {
