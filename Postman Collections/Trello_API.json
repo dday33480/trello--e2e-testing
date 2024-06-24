@@ -400,6 +400,18 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Invite Member",
+			"id": "8f7788b9-63f8-4223-a24d-39ce58a0a40c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"auth": {
