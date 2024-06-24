@@ -124,7 +124,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Lists Boards",
+			"name": "Get Boards",
 			"id": "d8d43c41-e8b9-49a5-b00b-5ac9b79b877b",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
