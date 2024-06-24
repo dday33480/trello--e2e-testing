@@ -201,6 +201,18 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create a List",
+			"id": "f06bcd17-021b-42aa-a595-35040b3fcc32",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"auth": {
