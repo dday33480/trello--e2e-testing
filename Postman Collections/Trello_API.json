@@ -131,7 +131,25 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/boards/{{TrelloId}}/lists/?{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						"{{TrelloId}}",
+						"lists",
+						""
+					],
+					"query": [
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": []
 		}
