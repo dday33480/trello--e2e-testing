@@ -57,16 +57,62 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Create boards",
 			"id": "98445ecc-2986-48e2-9d82-8aa140fbd3e7",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "APIKey",
+						"value": "{{API_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Test API\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/boards/"
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "993354ae-e843-4994-ab46-fbcf1ae41872",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a66e0b5f-aea9-4ea0-96fc-adeb9735f53d",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
