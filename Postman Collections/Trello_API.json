@@ -11,10 +11,10 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d10a1105-529a-4cff-9be4-03cda0dc3b95",
+						"id": "ccb5c000-7a00-42e1-bd33-f909011f9889",
 						"exec": [
 							"pm.test('Code Status', function() {\r",
-							"    \r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
 							"})"
 						],
 						"type": "text/javascript",
