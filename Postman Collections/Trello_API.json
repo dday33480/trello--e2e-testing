@@ -58,7 +58,7 @@
 			"response": []
 		},
 		{
-			"name": "Create boards",
+			"name": "Create Boards",
 			"event": [
 				{
 					"listen": "test",
@@ -173,7 +173,7 @@
 			"response": []
 		},
 		{
-			"name": "get a board",
+			"name": "Get a Board",
 			"event": [
 				{
 					"listen": "test",
