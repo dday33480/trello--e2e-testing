@@ -58,6 +58,21 @@
 		},
 		{
 			"name": "Create boards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67cc7318-1a8b-4c9e-a3df-8c23dd0f4420",
+						"exec": [
+							"pm.test('Code Status', function() {\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "98445ecc-2986-48e2-9d82-8aa140fbd3e7",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -85,7 +100,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/boards/?name=Test API&API_key={{API_key}}&token={{token}}",
+					"raw": "{{base_url}}/boards/?name=Test API&key={{API_key}}&token={{token}}",
 					"host": [
 						"{{base_url}}"
 					],
@@ -99,7 +114,7 @@
 							"value": "Test API"
 						},
 						{
-							"key": "API_key",
+							"key": "key",
 							"value": "{{API_key}}"
 						},
 						{
