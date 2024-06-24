@@ -124,7 +124,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Boards",
+			"name": "Get Boards Members",
 			"id": "d8d43c41-e8b9-49a5-b00b-5ac9b79b877b",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -133,7 +133,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/members/{{TrelloId}}/boards/?key={{API_key}}&token={{token}}",
+					"raw": "{{base_url}}/members/{{TrelloId}}/boards/?{{params_url}}",
 					"host": [
 						"{{base_url}}"
 					],
@@ -145,12 +145,8 @@
 					],
 					"query": [
 						{
-							"key": "key",
-							"value": "{{API_key}}"
-						},
-						{
-							"key": "token",
-							"value": "{{token}}"
+							"key": "{{params_url}}",
+							"value": null
 						}
 					]
 				}
