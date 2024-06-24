@@ -300,7 +300,10 @@
 							"pm.test('Card Name Not Empty', function() {\r",
 							"    const parsedData = pm.response.json();\r",
 							"    pm.expect(parsedData.name).to.not.equal('null')\r",
-							"})"
+							"})\r",
+							"\r",
+							"const idCard = pm.response.json();\r",
+							"pm.collectionVariables.set('cardId', idCard.id)"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -316,7 +319,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"Postman API v2\",\r\n    \"desc\" : \"Test d'ajout de carte via API\"\r\n}",
+					"raw": "{\r\n    \"name\" : \"Postman API\",\r\n    \"desc\" : \"Test d'ajout de carte via API\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -337,6 +340,43 @@
 							"key": "idList",
 							"value": "{{listId}}"
 						},
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Card",
+			"id": "71532d3d-faa2-4324-8687-a09145a80c4f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"API Postman updated\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cards/{{cardId}}?{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cards",
+						"{{cardId}}"
+					],
+					"query": [
 						{
 							"key": "{{params_url}}",
 							"value": null
@@ -393,6 +433,10 @@
 		{
 			"key": "listId",
 			"value": "667980e68327cb5eeb33c1e8"
+		},
+		{
+			"key": "cardId",
+			"value": ""
 		}
 	]
 }
