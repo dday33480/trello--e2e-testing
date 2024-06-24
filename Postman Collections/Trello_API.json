@@ -18,7 +18,8 @@
 							"})\r",
 							"\r",
 							"pm.test('idMember present', function() {\r",
-							"    pm.expect(pm.response.body).to.contain('idMember')\r",
+							"    const parser = pm.response.json()\r",
+							"    pm.expect(pm.response.body).to.have.property('idMember')\r",
 							"})"
 						],
 						"type": "text/javascript",
