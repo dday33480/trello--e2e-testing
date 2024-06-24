@@ -125,6 +125,18 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Lists Boards",
+			"id": "6893bd7a-1532-4b4e-8402-f95f77327f26",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"auth": {
