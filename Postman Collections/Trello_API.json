@@ -133,20 +133,25 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/boards/{{TrelloId}}/lists/?{{params_url}}",
+					"raw": "{{base_url}}/boards/{{TrelloId}}lists/?key={{API_key}}&token={{token}}",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"boards",
-						"{{TrelloId}}",
-						"lists",
+						"{{TrelloId}}lists",
 						""
 					],
 					"query": [
 						{
-							"key": "{{params_url}}",
-							"value": null
+							"key": "key",
+							"value": "{{API_key}}",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "text"
 						}
 					]
 				}
