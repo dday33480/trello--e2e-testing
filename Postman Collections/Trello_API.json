@@ -204,7 +204,58 @@
 		},
 		{
 			"name": "Create a List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3839999a-690b-48b8-97d3-0383c9953a97",
+						"exec": [
+							"pm.test('Code Status OK', function() {\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "f06bcd17-021b-42aa-a595-35040b3fcc32",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/lists/?name=Test API&idBoard={{IdBoards}}&{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"lists",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Test API"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{IdBoards}}"
+						},
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Card",
+			"id": "830cf32e-39cf-4e80-b20c-d0b00d819750",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
