@@ -7,6 +7,21 @@
 	"item": [
 		{
 			"name": "Get Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d10a1105-529a-4cff-9be4-03cda0dc3b95",
+						"exec": [
+							"pm.test('Code Status', function() {\r",
+							"    \r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "f38b98c8-160b-4979-a562-fc690c8782e6",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
