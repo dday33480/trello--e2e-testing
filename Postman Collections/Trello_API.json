@@ -58,6 +58,21 @@
 		},
 		{
 			"name": "Create boards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "973c33ea-d760-438e-a393-2f33974d0c3f",
+						"exec": [
+							"pm.test('Code Status', function() {\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "98445ecc-2986-48e2-9d82-8aa140fbd3e7",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -93,48 +108,15 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "API Tableau",
-							"type": "text"
+							"value": "API Tableau"
 						},
 						{
 							"key": "key",
-							"value": "{{API_key}}",
-							"type": "text"
+							"value": "{{API_key}}"
 						},
 						{
 							"key": "token",
-							"value": "{{token}}",
-							"type": "text"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Lists Boards",
-			"id": "6893bd7a-1532-4b4e-8402-f95f77327f26",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/boards/{id}/lists?",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"boards",
-						"{id}",
-						"lists"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null,
-							"type": "text"
+							"value": "{{token}}"
 						}
 					]
 				}
