@@ -449,7 +449,25 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/boards/{{IdBoards}}/members?{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"",
+						"boards",
+						"{{IdBoards}}",
+						"members"
+					],
+					"query": [
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": []
 		}
