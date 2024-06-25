@@ -264,7 +264,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"API Postman updated\"\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
