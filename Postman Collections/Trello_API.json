@@ -237,6 +237,58 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "deleteBoard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45087ad3-81cf-4e6d-9285-bb1f2b915331",
+						"exec": [
+							"pm.test(\"Status Code OK\", function() {\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "a0e9860a-a9f5-472b-b10a-865804492aa4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"API Postman updated\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/boards/{{IdBoards}}?{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						"{{IdBoards}}"
+					],
+					"query": [
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
