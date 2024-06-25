@@ -6,8 +6,43 @@
 	},
 	"item": [
 		{
-			"name": "Test Request",
-			"id": "f38b98c8-160b-4979-a562-fc690c8782e6",
+			"name": "Get a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb15ec87-cc44-48cc-9089-e346adc84c47",
+						"exec": [
+							"const tableName = pm.globals.get(\"nameBoard\");",
+							"",
+							"pm.test('Code Status', function(){",
+							"    pm.expect(pm.response.code).to.equal(200)",
+							"})",
+							"",
+							"pm.test('name visible', function(){",
+							"    const Jsondata = pm.response.json();",
+							"    pm.expect(Jsondata.name).to.contain(tableName)",
+							"})",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15993766-546d-439f-a91c-913d759b8155",
+						"exec": [
+							"const IdBoards = pm.globals.get(\"IdBoards\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "8054070d-850d-41a1-b11b-72ee9d849ea2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -15,23 +50,326 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.trello.com?Something=Quelquechose",
-					"protocol": "https",
+					"raw": "{{base_url}}/boards/{{IdBoards}}?{{params_url}}",
 					"host": [
-						"api",
-						"trello",
-						"com"
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						"{{IdBoards}}"
 					],
 					"query": [
 						{
-							"key": "Something",
-							"value": "Quelquechose",
-							"type": "text"
+							"key": "{{params_url}}",
+							"value": null
 						}
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create a List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3839999a-690b-48b8-97d3-0383c9953a97",
+						"exec": [
+							"pm.test('Code Status OK', function() {\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"\r",
+							"const parser = pm.response.json();\r",
+							"pm.collectionVariables.set('listId', parser.id)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e8c6d2cc-fe99-4a30-85dc-ee84b964ddb9",
+						"exec": [
+							"const IdBoards = pm.globals.get(\"IdBoards\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "f06bcd17-021b-42aa-a595-35040b3fcc32",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/lists/?name=Test API&idBoard={{IdBoards}}&{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"lists",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Test API"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{IdBoards}}"
+						},
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Card",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "31194147-3061-4217-9e4a-369945a2c876",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8eb9d31d-2ce4-4618-9e20-3d74c2175c10",
+						"exec": [
+							"pm.test(\"Code Status OK\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"\r",
+							"pm.test('Card Name Not Empty', function() {\r",
+							"    const parsedData = pm.response.json();\r",
+							"    pm.expect(parsedData.name).to.not.equal('null')\r",
+							"})\r",
+							"\r",
+							"const idCard = pm.response.json();\r",
+							"pm.collectionVariables.set('cardId', idCard.id)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "830cf32e-39cf-4e80-b20c-d0b00d819750",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Postman API\",\r\n    \"desc\" : \"Test d'ajout de carte via API\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cards/?idList={{listId}}&{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cards",
+						""
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "{{listId}}"
+						},
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45087ad3-81cf-4e6d-9285-bb1f2b915331",
+						"exec": [
+							"pm.test(\"Status Code OK\", function() {\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "71532d3d-faa2-4324-8687-a09145a80c4f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"API Postman updated\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cards/{{cardId}}?{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cards",
+						"{{cardId}}"
+					],
+					"query": [
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteBoard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45087ad3-81cf-4e6d-9285-bb1f2b915331",
+						"exec": [
+							"pm.test(\"Status Code OK\", function() {\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "20b33a13-504b-4107-8feb-cd99d07048c3",
+						"exec": [
+							"const IdBoards = pm.globals.get(\"IdBoards\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "a0e9860a-a9f5-472b-b10a-865804492aa4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/boards/{{IdBoards}}?{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						"{{IdBoards}}"
+					],
+					"query": [
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3adb6f60-d7cd-40b1-a224-e895dd0a6c40",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "21f47807-7a49-4930-b76c-a44654d85af5",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TrelloId",
+			"value": ""
+		},
+		{
+			"key": "MemberId",
+			"value": ""
+		},
+		{
+			"key": "listId",
+			"value": "667980e68327cb5eeb33c1e8"
+		},
+		{
+			"key": "cardId",
+			"value": ""
 		}
 	]
 }
