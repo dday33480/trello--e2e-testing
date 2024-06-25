@@ -6,54 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Get Boards Members",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "465eaef4-e3c2-4421-832a-93bdcde6cf50",
-						"exec": [
-							"pm.test('Code Status OK', function() {\r",
-							"    pm.expect(pm.response.code).to.equal(200)\r",
-							"})\r",
-							"\r",
-							"const parser = pm.response.json();\r",
-							"pm.collectionVariables.set('IdBoards', parser[0].id)"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "d8d43c41-e8b9-49a5-b00b-5ac9b79b877b",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/members/{{MemberId}}/boards/?{{params_url}}",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"members",
-						"{{MemberId}}",
-						"boards",
-						""
-					],
-					"query": [
-						{
-							"key": "{{params_url}}",
-							"value": null
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get a Board",
 			"event": [
 				{
