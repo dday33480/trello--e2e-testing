@@ -19,7 +19,7 @@
 							"",
 							"pm.test('name visible', function(){",
 							"    const Jsondata = pm.response.json();",
-							"    pm.expect(Jsondata.name).to.contain(\"Projet_Final_G1\")",
+							"    pm.expect(Jsondata.name).to.contain({{nameBoard}})",
 							"})"
 						],
 						"type": "text/javascript",
