@@ -13,14 +13,18 @@
 					"script": {
 						"id": "cb15ec87-cc44-48cc-9089-e346adc84c47",
 						"exec": [
+							"const tableName = pm.globals.get(\"nameBoard\");",
+							"",
 							"pm.test('Code Status', function(){",
 							"    pm.expect(pm.response.code).to.equal(200)",
 							"})",
 							"",
 							"pm.test('name visible', function(){",
 							"    const Jsondata = pm.response.json();",
-							"    pm.expect(Jsondata.name).to.contain(\"{{nameBoard}}\")",
-							"})"
+							"    pm.expect(Jsondata.name).to.contain(tableName)",
+							"})",
+							"",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
