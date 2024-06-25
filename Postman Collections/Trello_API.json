@@ -125,6 +125,75 @@
 			"response": []
 		},
 		{
+			"name": "Get Members",
+			"id": "6dc09230-53ea-47f8-90f5-a6dcf6a9ad03",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/boards/{{IdBoards}}/members?{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"",
+						"boards",
+						"{{IdBoards}}",
+						"members"
+					],
+					"query": [
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invite Member",
+			"id": "8f7788b9-63f8-4223-a24d-39ce58a0a40c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/boards/{{IdBoards}}}/members/66572a77c1b1d2a8a2ab8df1?type=normal&{{params_url}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"boards",
+						"{{IdBoards}}}",
+						"members",
+						"66572a77c1b1d2a8a2ab8df1"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "normal"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "{{params_url}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Boards Members",
 			"event": [
 				{
@@ -390,75 +459,6 @@
 					"path": [
 						"cards",
 						"{{cardId}}"
-					],
-					"query": [
-						{
-							"key": "{{params_url}}",
-							"value": null
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Invite Member",
-			"id": "8f7788b9-63f8-4223-a24d-39ce58a0a40c",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/boards/{{IdBoards}}}/members/66572a77c1b1d2a8a2ab8df1?type=normal&{{params_url}}",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"boards",
-						"{{IdBoards}}}",
-						"members",
-						"66572a77c1b1d2a8a2ab8df1"
-					],
-					"query": [
-						{
-							"key": "type",
-							"value": "normal"
-						},
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						},
-						{
-							"key": "{{params_url}}",
-							"value": null
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "TEST",
-			"id": "6dc09230-53ea-47f8-90f5-a6dcf6a9ad03",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/boards/{{IdBoards}}/members?{{params_url}}",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"",
-						"boards",
-						"{{IdBoards}}",
-						"members"
 					],
 					"query": [
 						{
