@@ -29,6 +29,17 @@
 						"type": "text/javascript",
 						"packages": {}
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15993766-546d-439f-a91c-913d759b8155",
+						"exec": [
+							"const IdBoards = pm.globals.get(\"IdBoards\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
 				}
 			],
 			"id": "8054070d-850d-41a1-b11b-72ee9d849ea2",
