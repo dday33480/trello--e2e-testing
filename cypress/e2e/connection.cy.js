@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 import { name } from "../fixtures/user";
 
-describe('User Login', () => {
+// Successful user login with valide credentials
+describe('User Login Success', () => {
     it('Successful connexion', () => {
       cy.visit("https://trello.com/");
 
