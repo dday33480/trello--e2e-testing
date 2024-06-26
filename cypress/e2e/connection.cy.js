@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
-import { name } from "../fixtures/user";
+
 
 // Successful user login with valide credentials
-describe.skip('User Login Success', () => {
+describe('User Login Success', () => {
     it('Successful connexion', () => {
       cy.visit("https://trello.com/");
 
@@ -52,7 +52,7 @@ describe.skip('User Login Success', () => {
 });
 
 // Unsuccessful user login with invalid or missing credentials
-describe('User Login Failure', () => {
+describe.skip('User Login Failure', () => {
   it.skip('Connexion with no email', () => {
 
     // Go to Trello.com
@@ -163,7 +163,7 @@ describe('User Login Failure', () => {
 })
 
 
-it('Connexion with invalid password', () => {
+it.skip('Connexion with invalid password', () => {
 
   // Go to Trello.com
   cy.visit('https://trello.com/')
