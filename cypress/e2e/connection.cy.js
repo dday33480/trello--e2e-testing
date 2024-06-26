@@ -1,47 +1,207 @@
 /// <reference types="cypress" />
-import { name } from "../fixtures/user";
 
-describe('User Login', () => {
+
+// Successful user login with valide credentials
+describe('User Login Success', () => {
     it('Successful connexion', () => {
-cy.visit("https://trello.com/");
+      cy.visit("https://trello.com/");
 
-cy.contains("Log in").click();
+      cy.contains("Log in").click();
 
-cy.wait(5000);
+      // wait for redirection
+      cy.wait(5000);
 
-// Visit atlassian to avoid domain change issue
-cy.visit("https://id.atlassian.com");
+      // Visit atlassian to avoid domain change issue
+      cy.visit("https://id.atlassian.com");
 
-cy.origin("https://id.atlassian.com", () => {
-  const { email, password } = Cypress.require("../fixtures/user");
+      // domain change to id.atlassian
+      cy.origin("https://id.atlassian.com", () => {
+        const { email, password } = Cypress.require("../fixtures/user");
 
-  // enter email
-  cy.get('[data-testid="username"]').type(email);
+        // enter email
+        cy.get('[data-testid="username"]').type(email);
 
-  // goto next
-  cy.get("#login-submit").click();
+        // login submit (email only)
+        cy.get("#login-submit").click();
 
-  // Detect that we are automate
-  cy.wait(4000);
+        // wait for password field to become visible
+        cy.wait(4000);
 
-  // enter password
-  cy.get("#password").type(password);
+        // enter password
+        cy.get("#password").type(password);
 
-  // goto next
-  cy.get("#login-submit").click();
+        // login submit (email + password)
+        cy.get("#login-submit").click();
 
-  // domain change wait is veryyy long
-  cy.wait(20000);
+        // domain change wait (very long)
+        cy.wait(20000);
+      });
+
+      // another domain change to team.atlassian
+      cy.origin("https://team.atlassian.com/", () => {
+        const { email } = Cypress.require("../fixtures/user");
+
+        // close dialog window
+        cy.get('.what-is-atlas-button > .css-178ag6o').click();
+
+        cy.get(
+          `[href='https://trello.com/appSwitcherLogin?login_hint=${email}']`
+        ).click();
+      });
+    });
 });
 
-cy.origin("https://team.atlassian.com/", () => {
-  const { email } = Cypress.require("../fixtures/user");
+// Unsuccessful user login with invalid or missing credentials
+describe.skip('User Login Failure', () => {
+  it.skip('Connexion with no email', () => {
 
-  cy.get('.what-is-atlas-button > .css-178ag6o').click();
+    // Go to Trello.com
+    cy.visit('https://trello.com/');
 
-  cy.get(
-    `[href='https://trello.com/appSwitcherLogin?login_hint=${email}']`
-  ).click();
-});
-});
+    // Get and click the "Log in" button
+    cy.get('[data-uuid="MJFtCCgVhXrVl7v9HA7EH_login"]').click();
+
+    // Wait for redirection
+    cy.wait(5000);
+
+    // Redirection to id.atlassian
+    cy.origin('https://id.atlassian.com', () => {
+
+      // Get and click on "Continue"
+      cy.get('#login-submit').click();
+
+      // Verify error message appears
+      cy.get('#username-uid2-error').should('be.visible').and('have.text', 'Enter an email address');
+    })
+  });
+
+
+  it.skip('Connexion with no password', () => {
+
+    // Go to Trello.com
+    cy.visit('https://trello.com/');
+
+    // Get and click the "Log in" button
+    cy.get('[data-uuid="MJFtCCgVhXrVl7v9HA7EH_login"]').click();
+
+    // Wait for redirection
+    cy.wait(5000);
+
+    // Redirection to id.atlassian
+    cy.origin('https://id.atlassian.com', () => {
+      // Use invalid user data from invalid_user.json file
+      const {email, password} = Cypress.require("../fixtures/invalid_user.json");
+
+      // Enter password
+      cy.get('[data-testid="username"]').type(email);
+
+      // Get and click on "Continue"
+      cy.get('#login-submit').click();
+
+      // Wait for password field to appear
+      cy.wait(3000);
+
+      // Verify entrered email is visible
+      cy.get('.css-cnfgt3').should('contain', email);
+
+      // Wait for password field to appear
+      cy.wait(1000);
+
+      // Click on Log in button
+      cy.get("#login-submit").click({force:true});
+
+      // Wait for submission timeout
+      cy.wait(1000);
+
+      // Verify error message appears
+      cy.get('#password-uid3-error').should('be.visible').and('have.text', 'Enter your password');
+    })
+  });
+
+
+  it.skip('Connexion with invalid email', () => {
+
+    // Go to Trello.com
+    cy.visit('https://trello.com/')
+
+    // Get and click the "Log in" button
+    cy.get('[data-uuid="MJFtCCgVhXrVl7v9HA7EH_login"]').click()
+
+    // Wait for redirection
+    cy.wait(5000)
+
+    // Redirection to id.atlassian
+    cy.origin('https://id.atlassian.com', () => {
+      // Use invalid user data from invalid_user.json file
+      const {email, password} = Cypress.require("../fixtures/invalid_user.json");
+
+      // Enter password
+      cy.get('[data-testid="username"]').type(email);
+
+      // Get and click on "Continue"
+      cy.get('#login-submit').click()
+
+      // Wait for password field to appear
+      cy.wait(500)
+
+      // Verify entrered email is visible
+      cy.get('.css-cnfgt3').should('contain', email);
+
+      // Enter password
+      cy.get('[data-testid="password"]').type(password);
+
+      // Click Log in button
+      cy.get('#login-submit').click();
+
+      // Verify error message appears
+      cy.get('[data-testid="form-error"]').should('be.visible').and('contain', 'Incorrect email address and / or password');
+
+      cy.wait(800)
+
+    })
+  });
+})
+
+
+it.skip('Connexion with invalid password', () => {
+
+  // Go to Trello.com
+  cy.visit('https://trello.com/')
+
+  // Get and click the "Log in" button
+  cy.get('[data-uuid="MJFtCCgVhXrVl7v9HA7EH_login"]').click()
+
+  // Wait for redirection
+  cy.wait(5000)
+
+  // Redirection to id.atlassian
+  cy.origin('https://id.atlassian.com', () => {
+      // Use invalid user password from invalid_user.json file and correct email fro user.json file
+      const {password} = Cypress.require("../fixtures/invalid_user.json");
+      const {email} = Cypress.require("../fixtures/user.json");
+
+    // Enter password
+    cy.get('[data-testid="username"]').type(email);
+
+    // Get and click on "Continue"
+    cy.get('#login-submit').click()
+
+    // Wait for password field to appear
+    cy.wait(500)
+
+    // Verify entrered email is visible
+    cy.get('.css-cnfgt3').should('contain', email);
+
+    // Enter password
+    cy.get('[data-testid="password"]').type(password);
+
+    // Click Log in button
+    cy.get('#login-submit').click();
+
+    // Verify error message appears
+    cy.get('[data-testid="form-error"]').should('be.visible').and('contain', 'Incorrect email address and / or password');
+
+    cy.wait(800)
+
+  })
 });
