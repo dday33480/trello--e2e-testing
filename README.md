@@ -19,5 +19,5 @@
 ---
 
 ### Running the scripts
-a. Run CLI `npm run cy:open` to run scripts via Cypress interface and virtual browser
-b. Run CLI `npm run cy:run` to run scripts in the terminal
+1. Run CLI `npm run cy:open` to run scripts via Cypress interface and virtual browser
+2. Run CLI `npm run cy:run` to run scripts in the terminal
