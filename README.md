@@ -13,4 +13,11 @@
 
 ### Technos used
 1. Postman - For API tests
-2. Cypress for E2E and UI Tests
+2. Cypress - For E2E and UI Tests
+3. Github Actions - For CI/CD Pipeline
+
+---
+
+### Running the scripts
+a. Run CLI `npm run cy:open` to run scripts via Cypress interface and virtual browser
+b. Run CLI `npm run cy:run` to run scripts in the terminal
