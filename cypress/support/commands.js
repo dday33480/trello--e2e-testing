@@ -76,3 +76,16 @@ Cypress.Commands.add('login', (email) => {
     }
     );
 });
+
+Cypress.Commands.add('parseCookieValue', (cookieValue) => {
+    // Split cookie value into key/value pairs
+    const pairs = cookieValue.split('&');
+    const parsed = {};
+
+    pairs.forEach(pair => {
+        const [key, value] = pair.split('=');
+        parsed[key] = decodeURIComponent(value);
+    });
+
+    return parsed;
+})
