@@ -1,15 +1,15 @@
 import { email } from "../fixtures/user";
 
-beforeEach( () => {
-  cy.login(email);
-})
-
 describe('Disconnect User', () => {
-    it('Disconnect', () => {
+  beforeEach( () => {
+    cy.login(email);
+  })
+
+  it('Disconnect', () => {
       // Go to the dashboard
       cy.visit("https://trello.com/");
 
-      cy.wait(2000);
+      cy.wait(3000);
 
       // Click on memeber icon
       cy.get('[data-testid="header-member-menu-avatar"]').click();
@@ -22,8 +22,6 @@ describe('Disconnect User', () => {
 
       // Redirect to id.atlassian.com
       cy.origin('https://id.atlassian.com/', () => {
-        // Import user data from user.json file
-        const name = Cypress.require('../fixtures/user');
 
         // Wait for poage load
         cy.wait(2000);
