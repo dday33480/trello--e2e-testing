@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
-import { email } from "../fixtures/user";
+//import { email } from "../fixtures/user";
+const email = Cypress.env('email');
 
 
   

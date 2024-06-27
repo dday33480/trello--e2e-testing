@@ -1,10 +1,5 @@
 /// <reference types="cypress" />
 
-      // Set credential variables 
-      const userEmail = Cypress.env('email');
-      const userPassword = Cypress.env('password');
-      const invalidEmail = Cypress.env('invalidEmail');
-      const invalidPassword = Cypress.env('invalidPassword');
 
 // Successful user login with valide credentials
 describe('User Login Success', () => {
@@ -24,6 +19,10 @@ describe('User Login Success', () => {
       cy.origin("https://id.atlassian.com", () => {
         // Import user credentials from the fixtures
         //const { email, password } = Cypress.require("../fixtures/user");
+
+        // Set credential variables 
+        const userEmail = Cypress.env('email');
+        const userPassword = Cypress.env('password');
 
         // enter email
         cy.get('[data-testid="username"]').type(userEmail);
@@ -49,8 +48,8 @@ describe('User Login Success', () => {
         // Import user email from the fixtures
         //const { email } = Cypress.require("../fixtures/user");
 
-        // Set credential variables based on fixture data or env data if available
-        //const userEmail = Cypress.env('email') || email;
+        // Set credential variables
+        const userEmail = Cypress.env('email');
 
         // close dialog window
         cy.get('.what-is-atlas-button > .css-178ag6o').click();
@@ -101,7 +100,7 @@ describe('User Login Failure', () => {
     // Redirection to id.atlassian
     cy.origin('https://id.atlassian.com', () => {
       // Use invalid user data from invalid_user.json file
-      //const {email, password} = Cypress.require("../fixtures/invalid_user.json");
+      const invalidEmail = Cypress.env('invalidEmail');
 
       // Enter password
       cy.get('[data-testid="username"]').type(invalidEmail);
@@ -144,7 +143,8 @@ describe('User Login Failure', () => {
     // Redirection to id.atlassian
     cy.origin('https://id.atlassian.com', () => {
       // Use invalid user data from invalid_user.json file
-      //const {email, password} = Cypress.require("../fixtures/invalid_user.json");
+      const invalidEmail = Cypress.env('invalidEmail');
+      const userPassword = Cypress.env('password');
 
       // Enter password
       cy.get('[data-testid="username"]').type(invalidEmail);
@@ -159,7 +159,7 @@ describe('User Login Failure', () => {
       cy.get('.css-cnfgt3').should('contain', invalidEmail);
 
       // Enter password
-      cy.get('[data-testid="password"]').type(password);
+      cy.get('[data-testid="password"]').type(userPassword);
 
       // Click Log in button
       cy.get('#login-submit').click();
@@ -187,11 +187,11 @@ describe('User Login Failure', () => {
     // Redirection to id.atlassian
     cy.origin('https://id.atlassian.com', () => {
         // Use invalid user password from invalid_user.json file and correct email fro user.json file
-        //const {password} = Cypress.require("../fixtures/invalid_user.json");
-        //const {email} = Cypress.require("../fixtures/user.json");
+        const invalidPassword = Cypress.env('invalidPassword');
+        const userEmail = Cypress.env('email');
 
       // Enter password
-      cy.get('[data-testid="username"]').type(email);
+      cy.get('[data-testid="username"]').type(userEmail);
 
       // Get and click on "Continue"
       cy.get('#login-submit').click()
@@ -200,7 +200,7 @@ describe('User Login Failure', () => {
       cy.wait(500)
 
       // Verify entrered email is visible
-      cy.get('.css-cnfgt3').should('contain', email);
+      cy.get('.css-cnfgt3').should('contain', userEmail);
 
       // Enter password
       cy.get('[data-testid="password"]').type(invalidPassword);

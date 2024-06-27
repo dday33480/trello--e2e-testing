@@ -1,4 +1,4 @@
-import { email } from "../fixtures/user";
+const email = Cypress.env('email');
 
 describe('Disconnect User', () => {
   beforeEach( () => {
