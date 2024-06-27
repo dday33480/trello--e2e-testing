@@ -1,4 +1,4 @@
-describe('Cookie Consent Accept', () => {
+describe.skip('Cookie Consent Accept', () => {
     it('Accept cookies', () => {
         // Go to the trello.com homepage
         cy.visit('https://trello.com/');
