@@ -38,10 +38,15 @@ Cypress.Commands.add('login', (email) => {
 
         // domain change to id.atlassian
         cy.origin("https://id.atlassian.com", () => {
+        // Import user credentials from the fixtures
         const { email, password } = Cypress.require("../fixtures/user");
 
+        // Set credential variables based on fixture data or env data if available
+        const userEmail = Cypress.env('email') || email;
+        const userPassword = Cypress.env('password') || password;
+
         // enter email
-        cy.get('[data-testid="username"]').type(email);
+        cy.get('[data-testid="username"]').type(userEmail);
 
         // login submit (email only)
         cy.get("#login-submit").click();
@@ -50,7 +55,7 @@ Cypress.Commands.add('login', (email) => {
         cy.wait(4000);
 
         // enter password
-        cy.get("#password").type(password);
+        cy.get("#password").type(userPassword);
 
         // login submit (email + password)
         cy.get("#login-submit").click();
@@ -61,13 +66,17 @@ Cypress.Commands.add('login', (email) => {
 
         // another domain change to team.atlassian
         cy.origin("https://team.atlassian.com/", () => {
+        // Import user email from the fixtures
         const { email } = Cypress.require("../fixtures/user");
+
+        // Set credential variables based on fixture data or env data if available
+        const userEmail = Cypress.env('email') || email;
 
         // close dialog window
         cy.get('.what-is-atlas-button > .css-178ag6o').click();
 
         cy.get(
-            `[href='https://trello.com/appSwitcherLogin?login_hint=${email}']`
+            `[href='https://trello.com/appSwitcherLogin?login_hint=${userEmail}']`
         ).click();
         });
     },
