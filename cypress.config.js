@@ -12,7 +12,7 @@ module.exports = defineConfig({
       email: process.env.USER_EMAIL,
       password: process.env.USER_PASSWORD,
       invalidEmail: process.env.INVALID_EMAIL,
-      invalidPassword: process.env.INVALID8PASSWORD
+      invalidPassword: process.env.INVALID_PASSWORD
     }
   },
 });
