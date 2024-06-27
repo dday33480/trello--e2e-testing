@@ -39,11 +39,11 @@ Cypress.Commands.add('login', (email) => {
         // domain change to id.atlassian
         cy.origin("https://id.atlassian.com", () => {
         // Import user credentials from the fixtures
-        const { email, password } = Cypress.require("../fixtures/user");
+        //const { email, password } = Cypress.require("../fixtures/user");
 
         // Set credential variables based on fixture data or env data if available
-        const userEmail = Cypress.env('email') || email;
-        const userPassword = Cypress.env('password') || password;
+        const userEmail = Cypress.env('email');
+        const userPassword = Cypress.env('password');
 
         // enter email
         cy.get('[data-testid="username"]').type(userEmail);
@@ -67,10 +67,10 @@ Cypress.Commands.add('login', (email) => {
         // another domain change to team.atlassian
         cy.origin("https://team.atlassian.com/", () => {
         // Import user email from the fixtures
-        const { email } = Cypress.require("../fixtures/user");
+        //const { email } = Cypress.require("../fixtures/user");
 
         // Set credential variables based on fixture data or env data if available
-        const userEmail = Cypress.env('email') || email;
+        const userEmail = Cypress.env('email');
 
         // close dialog window
         cy.get('.what-is-atlas-button > .css-178ag6o').click();
