@@ -6,6 +6,10 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     experimentalOriginDependencies: true,
-    video: true
+    video: true,
+    env: {
+      email: process.env.USER_EMAIL,
+      password: process.env.USER_PASSWORD
+    }
   },
 });
