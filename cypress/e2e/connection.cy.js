@@ -169,48 +169,48 @@ describe.skip('User Login Failure', () => {
 
     })
   });
+
+  
+  it.skip('Connexion with invalid password', () => {
+
+    // Go to Trello.com
+    cy.visit('https://trello.com/')
+
+    // Get and click the "Log in" button
+    cy.get('[data-uuid="MJFtCCgVhXrVl7v9HA7EH_login"]').click()
+
+    // Wait for redirection
+    cy.wait(5000)
+
+    // Redirection to id.atlassian
+    cy.origin('https://id.atlassian.com', () => {
+        // Use invalid user password from invalid_user.json file and correct email fro user.json file
+        const {password} = Cypress.require("../fixtures/invalid_user.json");
+        const {email} = Cypress.require("../fixtures/user.json");
+
+      // Enter password
+      cy.get('[data-testid="username"]').type(email);
+
+      // Get and click on "Continue"
+      cy.get('#login-submit').click()
+
+      // Wait for password field to appear
+      cy.wait(500)
+
+      // Verify entrered email is visible
+      cy.get('.css-cnfgt3').should('contain', email);
+
+      // Enter password
+      cy.get('[data-testid="password"]').type(password);
+
+      // Click Log in button
+      cy.get('#login-submit').click();
+
+      // Verify error message appears
+      cy.get('[data-testid="form-error"]').should('be.visible').and('contain', 'Incorrect email address and / or password');
+
+      cy.wait(800)
+
+    })
+  });
 })
-
-
-it.skip('Connexion with invalid password', () => {
-
-  // Go to Trello.com
-  cy.visit('https://trello.com/')
-
-  // Get and click the "Log in" button
-  cy.get('[data-uuid="MJFtCCgVhXrVl7v9HA7EH_login"]').click()
-
-  // Wait for redirection
-  cy.wait(5000)
-
-  // Redirection to id.atlassian
-  cy.origin('https://id.atlassian.com', () => {
-      // Use invalid user password from invalid_user.json file and correct email fro user.json file
-      const {password} = Cypress.require("../fixtures/invalid_user.json");
-      const {email} = Cypress.require("../fixtures/user.json");
-
-    // Enter password
-    cy.get('[data-testid="username"]').type(email);
-
-    // Get and click on "Continue"
-    cy.get('#login-submit').click()
-
-    // Wait for password field to appear
-    cy.wait(500)
-
-    // Verify entrered email is visible
-    cy.get('.css-cnfgt3').should('contain', email);
-
-    // Enter password
-    cy.get('[data-testid="password"]').type(password);
-
-    // Click Log in button
-    cy.get('#login-submit').click();
-
-    // Verify error message appears
-    cy.get('[data-testid="form-error"]').should('be.visible').and('contain', 'Incorrect email address and / or password');
-
-    cy.wait(800)
-
-  })
-});
