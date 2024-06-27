@@ -3,3 +3,4 @@ cypress/fixtures/user.json
 cypress/fixtures/invalid_user.json
 cypress/downloads/*
 cypress/videos/*
+cypress/screenshots/*
