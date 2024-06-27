@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -9,7 +10,9 @@ module.exports = defineConfig({
     video: true,
     env: {
       email: process.env.USER_EMAIL,
-      password: process.env.USER_PASSWORD
+      password: process.env.USER_PASSWORD,
+      invalidEmail: process.env.INVALID_EMAIL,
+      invalidPassword: process.env.INVALID8PASSWORD
     }
   },
 });

@@ -6,10 +6,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          headless: true
         env:
-          email: ${{ secrets.USER_EMAIL }}
-          password: ${{ secrets.USER_PASSWORD }}
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          INVALID_EMAIL: ${{ secrets.INVALID_EMAIL }}
+          INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
