@@ -61,8 +61,8 @@ describe('User Login Success', () => {
 });
 
 // Unsuccessful user login with invalid or missing credentials
-describe.skip('User Login Failure', () => {
-  it.skip('Connexion with no email', () => {
+describe('User Login Failure', () => {
+  it('Connexion with no email', () => {
 
     // Go to Trello.com
     cy.visit('https://trello.com/');
@@ -85,7 +85,7 @@ describe.skip('User Login Failure', () => {
   });
 
 
-  it.skip('Connexion with no password', () => {
+  it('Connexion with no password', () => {
 
     // Go to Trello.com
     cy.visit('https://trello.com/');
@@ -128,7 +128,7 @@ describe.skip('User Login Failure', () => {
   });
 
 
-  it.skip('Connexion with invalid email', () => {
+  it('Connexion with invalid email', () => {
 
     // Go to Trello.com
     cy.visit('https://trello.com/')
@@ -171,7 +171,7 @@ describe.skip('User Login Failure', () => {
   });
 
   
-  it.skip('Connexion with invalid password', () => {
+  it('Connexion with invalid password', () => {
 
     // Go to Trello.com
     cy.visit('https://trello.com/')
