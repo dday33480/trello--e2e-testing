@@ -1,7 +1,11 @@
 /// <reference types="cypress" />
 import { email } from "../fixtures/user";
 
-beforeEach( () => {
+const title = 'Hello le monde'
+
+describe('boardManip', () => {
+
+  beforeEach( () => {
   cy.login(email);
   cy.timeout(7000)
       cy.visit("https://trello.com/");
@@ -9,11 +13,7 @@ cy.get(':nth-child(2) > :nth-child(2) > .boards-page-board-section-list > :nth-c
 cy.wait(10000)
 })
 
-const title = 'Hello le monde'
-
-describe('boardManip', () => {
-
-it.skip('create listAndcard', () => {
+it('create listAndcard', () => {
 
 cy.contains("Ajoutez une autre liste").click()
 cy.get('.vVqwaYKVgTygrk > [data-testid="list-name-textarea"]').type('In progress')
@@ -40,7 +40,7 @@ cy.get('[data-testid="list-card-composer-add-card-button"]')
 
 it('dragAnddrop', () => {
   
-  cy.get('.T9JQSaXUsHTEzk').should('have.text', title).drag('[data-list-id="667a9a46966d6248e4419ac2"]', {force: true})
+  cy.get('.T9JQSaXUsHTEzk').should('have.text', title).drag('[data-list-id="667d7dc34345ca81e3a21217"]', {force: true})
 
 })
 
