@@ -17,8 +17,6 @@ describe('User Login Success', () => {
 
       // domain change to id.atlassian
       cy.origin("https://id.atlassian.com", () => {
-        // Import user credentials from the fixtures
-        //const { email, password } = Cypress.require("../fixtures/user");
 
         // Set credential variables 
         const userEmail = Cypress.env('email');

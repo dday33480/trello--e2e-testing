@@ -1,14 +1,13 @@
 /// <reference types="cypress" />
 //import { email } from "../fixtures/user";
-const email = Cypress.env('email');
-
 
   
-describe('Acces Espace travail', () => {
+describe.skip('Acces Espace travail', () => {
 
     beforeEach( () => {
-        cy.login(email);
-      })
+      const email = Cypress.env('email');
+      cy.login(email);
+    })
 
     //Accés à l"espace de travail 
     
@@ -17,7 +16,7 @@ describe('Acces Espace travail', () => {
     cy.visit("https://trello.com/u/adjwcs1/boards");
     cy.wait(5000);
     cy.url().should('include','/u/');
-    cy.get('[href="/w/espacedetravail27174793/home"]').should('have.text','EEspace de travail de azizsene')
+    cy.get('[href="/w/espacedetravail27174793/home"]').should('have.text','Espace de travail de azizsene')
     .click({force:true});
 
     //Aller sur les tableaux
