@@ -14,9 +14,11 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          headless: true
         env:
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           INVALID_EMAIL: ${{ secrets.INVALID_EMAIL }}
           INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
+
+      - name: Publish Report
+        run: npx github-actions-ctrf ctrf/ctrf-report.json
